@@ -63,8 +63,8 @@
 
 <div id="word-container"></div>
 <div id="input-container">
-  <input type="text" id="character-input" maxlength="1">
-  <button onclick="checkAnswer()">Sprawdź!</button>
+    <button onclick="checkAnswer('ó')">ó</button>
+    <button onclick="checkAnswer('u')">u</button>
 </div>
 <p id="result"></p>
 
@@ -91,15 +91,16 @@
       }
     }
     document.getElementById("word-container").innerHTML = wordToDisplay;
+  }
 
+  function shakeWord() {
     document.getElementById("word-container").classList.add("shake");
     setTimeout(() => {
       document.getElementById("word-container").classList.remove("shake");
     }, 1000);
   }
 
-  function checkAnswer() {
-    const userAnswer = document.getElementById("character-input").value.toLowerCase();
+  function checkAnswer(userAnswer) {
     const correctAnswer = currentWord[hiddenIndex].toLowerCase();
     const resultElement = document.getElementById("result");
 
@@ -109,14 +110,12 @@
       setTimeout(() => {
         chooseWord();
         displayWord();
-        document.getElementById("character-input").value = "";
         resultElement.textContent = "";
       }, 1000);
     } else {
       resultElement.textContent = "🙅🏻‍♀️ Nie, spróbuj ponownie 😊";
       resultElement.style.color = "red";
       setTimeout(() => {
-        document.getElementById("character-input").value = "";
         resultElement.textContent = "";
       }, 1000);
     }
