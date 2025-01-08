@@ -6,6 +6,6 @@ parts = s.replace('=', ' ').split()
 # Filter out the integers, leaving only the words
 words = [part for part in parts if not part.isdigit() and ('ó' in part or 'u' in part) and len(part) > 1]
 
-words = words[:25]
+words = words[:50]
 
 print(words)
