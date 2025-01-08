@@ -25,6 +25,11 @@
     align-items: center;
   }
 
+  #result {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
   button {
     font-size: 3em;
     padding: 8px 16px;
@@ -55,13 +60,13 @@
 </head>
 <body>
 
+<p id="result"></p>
 <div id="word-container"></div>
 <div id="input-container">
     <button onclick="checkAnswer('ó')">ó</button>
     &nbsp;&nbsp;&nbsp;
     <button onclick="checkAnswer('u')">u</button>
 </div>
-<p id="result"></p>
 
 <script>
   const words = ['już', 'który', 'tu', 'sposób', 'mój', 'lub', 'ku', 'którego', 'znowu', 'tutaj', 'również', 'znów', 'zupełnie', 'długo', 'cóż', 'wśród', 'swój', 'wokół', 'dużo', 'drugi', 'mówić', 'wkrótce', 'dół', 'pół', 'wówczas', 'trudno', 'tuż', 'usta', 'równie', 'bóg', 'twój', 'jutro', 'czemu', 'dopóki', 'ów', 'według', 'król', 'spokój', 'pokój', 'wzdłuż', 'ból', 'szczególnie', 'ruch', 'wieczór', 'uśmiech', 'długi', 'uważnie', 'zrozumieć', 'akurat', 'samochód'];
