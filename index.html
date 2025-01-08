@@ -93,7 +93,7 @@
     document.getElementById("word-container").innerHTML = wordToDisplay;
   }
 
-  function shakeWord() {
+  function shakeNo() {
     document.getElementById("word-container").classList.add("shake");
     setTimeout(() => {
       document.getElementById("word-container").classList.remove("shake");
@@ -115,6 +115,7 @@
     } else {
       resultElement.textContent = "🙅🏻‍♀️ Nie, spróbuj ponownie 😊";
       resultElement.style.color = "red";
+      shakeNo();
       setTimeout(() => {
         resultElement.textContent = "";
       }, 1000);
