@@ -92,6 +92,10 @@
     } else {
       resultElement.textContent = "🙅🏻‍♀️ Nie, spróbuj ponownie 😊";
       resultElement.style.color = "red";
+      setTimeout(() => {
+        document.getElementById("character-input").value = "";
+        resultElement.textContent = "";
+      }, 1000);
     }
   }
 
