@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Missing Character Game</title>
+<title>ó czy u?</title>
 <style>
   body {
     font-family: sans-serif;
@@ -17,10 +17,6 @@
     font-size: 3em;
     letter-spacing: 10px;
     margin-bottom: 20px;
-  }
-
-  .hidden {
-    visibility: hidden;
   }
 
   #input-container {
@@ -50,25 +46,28 @@
 <div id="word-container"></div>
 <div id="input-container">
   <input type="text" id="character-input" maxlength="1">
-  <button onclick="checkAnswer()">Check</button>
+  <button onclick="checkAnswer()">Sprawdź!</button>
 </div>
 <p id="result"></p>
 
 <script>
-  const words = ["example", "javascript", "programming", "challenge", "frontend"];
+  const words = ['już', 'który', 'tu', 'sposób', 'mój', 'lub', 'ku', 'którego', 'znowu', 'tutaj', 'również', 'znów', 'zupełnie', 'długo', 'cóż', 'wśród', 'swój', 'wokół', 'dużo', 'drugi', 'mówić', 'wkrótce', 'dół', 'pół', 'wówczas'];
   let currentWord;
   let hiddenIndex;
 
   function chooseWord() {
     currentWord = words[Math.floor(Math.random() * words.length)];
-    hiddenIndex = Math.floor(Math.random() * currentWord.length);
+    hiddenIndex = currentWord.indexOf('u');
+    if (hiddenIndex == -1) {
+        hiddenIndex = currentWord.indexOf('ó');
+    }
   }
 
   function displayWord() {
     let wordToDisplay = "";
     for (let i = 0; i < currentWord.length; i++) {
       if (i === hiddenIndex) {
-        wordToDisplay += "<span class='hidden'>_</span>";
+        wordToDisplay += "<span>_</span>";
       } else {
         wordToDisplay += currentWord[i];
       }
@@ -81,8 +80,8 @@
     const correctAnswer = currentWord[hiddenIndex].toLowerCase();
     const resultElement = document.getElementById("result");
 
-    if (userAnswer === correctAnswer) {
-      resultElement.textContent = "Correct!";
+    if (userAnswer === correctAnswer || (correctAnswer === 'ó' && userAnswer === 'o')) {
+      resultElement.textContent = "❤️ Brawo! 🐱";
       resultElement.style.color = "green";
       setTimeout(() => {
         chooseWord();
@@ -91,7 +90,7 @@
         resultElement.textContent = "";
       }, 1000);
     } else {
-      resultElement.textContent = "Incorrect. Try again.";
+      resultElement.textContent = "🙅🏻‍♀️ Nie, spróbuj ponownie 😊";
       resultElement.style.color = "red";
     }
   }
