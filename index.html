@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Missing Character Game</title>
+<style>
+  body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #word-container {
+    font-size: 3em;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  #input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  input[type="text"] {
+    font-size: 1.5em;
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="word-container"></div>
+<div id="input-container">
+  <input type="text" id="character-input" maxlength="1">
+  <button onclick="checkAnswer()">Check</button>
+</div>
+<p id="result"></p>
+
+<script>
+  const words = ["example", "javascript", "programming", "challenge", "frontend"];
+  let currentWord;
+  let hiddenIndex;
+
+  function chooseWord() {
+    currentWord = words[Math.floor(Math.random() * words.length)];
+    hiddenIndex = Math.floor(Math.random() * currentWord.length);
+  }
+
+  function displayWord() {
+    let wordToDisplay = "";
+    for (let i = 0; i < currentWord.length; i++) {
+      if (i === hiddenIndex) {
+        wordToDisplay += "<span class='hidden'>_</span>";
+      } else {
+        wordToDisplay += currentWord[i];
+      }
+    }
+    document.getElementById("word-container").innerHTML = wordToDisplay;
+  }
+
+  function checkAnswer() {
+    const userAnswer = document.getElementById("character-input").value.toLowerCase();
+    const correctAnswer = currentWord[hiddenIndex].toLowerCase();
+    const resultElement = document.getElementById("result");
+
+    if (userAnswer === correctAnswer) {
+      resultElement.textContent = "Correct!";
+      resultElement.style.color = "green";
+      setTimeout(() => {
+        chooseWord();
+        displayWord();
+        document.getElementById("character-input").value = "";
+        resultElement.textContent = "";
+      }, 1000);
+    } else {
+      resultElement.textContent = "Incorrect. Try again.";
+      resultElement.style.color = "red";
+    }
+  }
+
+  chooseWord();
+  displayWord();
+</script>
+
+</body>
+</html>
